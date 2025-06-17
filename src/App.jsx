@@ -5,7 +5,7 @@ import UnsplashImage from "./components/background/UnsplashImage.jsx";
 import BackgroundImage from "./components/background/BackgroundImage.jsx";
 import WheaterInfo from "./components/wheaterMain/wheaterInfo.jsx";
 
-
+  
 
 const GlobalStyle = createGlobalStyle`
   body {
