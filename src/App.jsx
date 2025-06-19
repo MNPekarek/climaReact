@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
-import { BrowserRouter } from "react-router-dom";
-// import AppRoutes from "./routes/AppRoutes.jsx";
-
+import Home from "./pages/home";
 
 
 export default function App() {
@@ -12,9 +10,9 @@ export default function App() {
   return (  
     <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
       <GlobalStyle />
-      {/* <BrowserRouter> */}
-        <AppRoutes darkMode={darkMode} setDarkMode={setDarkMode}/>        
-        {/* </BrowserRouter>     */}
+      
+        <Home darkMode={darkMode} setDarkMode={setDarkMode}/>        
+        
     </ThemeProvider>
     
   );
