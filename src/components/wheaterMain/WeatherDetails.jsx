@@ -17,6 +17,7 @@ const StyledCard = styled.div`
   @media (max-width: 768px) {
     width: 90%;
     padding: 1rem;
+    margin-left: 15px;
   }
 `;
 
@@ -31,6 +32,7 @@ export const StyledButton = styled(motion.button)`
   letter-spacing: 0.5px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   transition: background 0.3s ease;
+  
 
   &:hover {
     background: #333;

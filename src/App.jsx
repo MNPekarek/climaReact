@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext }  from "react";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
 import Home from "./pages/Home";
+import { WeatherContext } from "./components/WeatherContext";
 
 
 export default function App() {
+
+  const {darkMode, setDarkMode} =useContext(WeatherContext);
   
-  const [darkMode, setDarkMode] = useState(false); 
+  // const [darkMode, setDarkMode] = useState(false); 
 
   return (  
     <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>

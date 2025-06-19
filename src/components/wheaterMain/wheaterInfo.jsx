@@ -4,6 +4,9 @@ import styled from "styled-components";
 import { WeatherContext } from "../WeatherContext";
 import { AnimatePresence, motion } from "framer-motion";
 import { StyledButton } from "./WeatherDetails.jsx";
+import { EyeButton } from "../../pages/Home.jsx";
+import { BsEye, BsEyeSlash } from "react-icons/bs";
+
 
 const WeatherCard = styled.div`
   /* background: ${({ theme }) => theme.card}; */
@@ -18,6 +21,7 @@ const WeatherCard = styled.div`
   @media (max-width: 768px) {
     width: 90%;
     padding: 1rem;
+    margin-left: 15px;
     min-height: 350px;
   }
 `;
@@ -25,7 +29,7 @@ const WeatherCard = styled.div`
 
 const MotionCard = motion.create(WeatherCard);
 
-const WheaterInfo = ({ weather, setDetailsOpen }) => {
+const WheaterInfo = ({ weather, setDetailsOpen, showOnlyBackground, setShowOnlyBackground }) => {
   // const {city} = useContext(WeatherContext);
 
   const fechaCompleta = weather?.dt
@@ -63,7 +67,12 @@ const WheaterInfo = ({ weather, setDetailsOpen }) => {
             <p>Última actualización: {fechaCompleta}</p>
 
             <StyledButton
-            onClick={() => setDetailsOpen(true)}> Más Información</StyledButton>           
+            onClick={() => setDetailsOpen(true)}> Más Información</StyledButton>  
+
+            <EyeButton 
+            onClick={()=> setShowOnlyBackground(true)}>
+        {showOnlyBackground ? <BsEyeSlash /> : <BsEye />}
+      </EyeButton>         
              
             
           </MotionCard>

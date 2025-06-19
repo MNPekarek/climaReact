@@ -9,20 +9,37 @@ import WheaterDay from "../components/WheaterDay/WheaterDay.jsx";
 import { Outlet } from "react-router-dom";
 import WeatherDetails from "../components/wheaterMain/WeatherDetails.jsx";
 import { AnimatePresence, motion } from "framer-motion";
+import ToggleButtonNightmode from "../components/ToggleButtonNightmode/ToggleButtonNightmode.jsx";
+import { BsEye, BsEyeSlash } from "react-icons/bs";
+
 
 motion;
 
-export default function Home({ darkMode, setDarkMode }) {
+export default function Home() {
   const { weather, city } = useContext(WeatherContext);
   const [imageUrl, setImageUrl] = useState("");
 
   const [detailsOpen, setDetailsOpen] = useState(false);
 
+  const [showOnlyBackground, setShowOnlyBackground] = useState(false);
+
+
   return (
     <Container>
       <UnsplashImage city={city} setImageUrl={setImageUrl} />
       <BackgroundImage imageUrl={imageUrl} />
-      <h1>Clima Actual</h1>
+
+      {showOnlyBackground && (
+        <EyeButton 
+            onClick={()=> setShowOnlyBackground(false)}>
+        {showOnlyBackground ? <BsEyeSlash /> : <BsEye />}
+      </EyeButton> 
+      )}     
+
+      {!showOnlyBackground && (
+        <>
+        <h1>Clima Actual</h1>
+      <ToggleButtonNightmode />
       <Search />
 
       <AnimatePresence mode="wait">
@@ -48,25 +65,26 @@ export default function Home({ darkMode, setDarkMode }) {
               exit={{ opacity: 0, scale: 0.94, filter: "blur(6px)" }}
               transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
             >
-              <WheaterInfo weather={weather} setDetailsOpen={setDetailsOpen} />
+              <WheaterInfo weather={weather} setDetailsOpen={setDetailsOpen} showOnlyBackground={showOnlyBackground} setShowOnlyBackground={setShowOnlyBackground} />
             </motion.div>
           )}
-          {weather && detailsOpen && (
-            
-              
-           <WeatherDetails setDetailsOpen={setDetailsOpen} />
-              
-           
+          {weather && detailsOpen && (           
+           <WeatherDetails setDetailsOpen={setDetailsOpen} />             
           )}
         </motion.div>
       </AnimatePresence>
+      
 
-      <ToggleButton onClick={() => setDarkMode(!darkMode)}>
+      {/* <ToggleButton onClick={() => setDarkMode(!darkMode)}>
         {darkMode ? "Modo Claro" : "Modo Oscuro"}
-      </ToggleButton>
+      </ToggleButton> */}
       <WheaterDay city={city} />
 
       <Outlet />
+        </>
+      )}
+
+      
     </Container>
   );
 }
@@ -86,4 +104,23 @@ const ToggleButton = styled.button`
   color: #fff;
   border-radius: 1rem;
   cursor: pointer;
+`;
+
+export const EyeButton = styled.button`
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 5;
+  background: rgba(255, 255, 255, 0.3);
+  border: none;
+  padding: 0.6rem 0.8rem;
+  border-radius: 50%;
+  font-size: 1.3rem;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.5);
+  }
 `;
