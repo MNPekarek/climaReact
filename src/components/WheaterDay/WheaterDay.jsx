@@ -61,46 +61,66 @@ export default function WheaterDay({ city }) {
   if (!dailySummary.length) return <p>No se pudo cargar el pronóstico.</p>;
 
   return (
-    <ForecastContainer>
-      {dailySummary.map((day, index) => (
-        <ForecastCard key={index}>
-          <p>
-            {new Date(day.date).toLocaleDateString("es-AR", {
-              weekday: "long", 
-              
-            }) }
-          </p>
-          <p>
-            {new Date(day.date).toLocaleDateString("es-AR", {
-              
-              day: "numeric",
-              month: "long",
-            }) }
-          </p>
-          <img
-            src={`http://openweathermap.org/img/wn/${day.icon}@2x.png`}
-            alt="icono clima"
-          />
-          <p>{day.description}</p>
-          <p>Mín: {Math.round(day.temp_min)}°C</p>
-          <p>Max: {Math.round(day.temp_max)}°C</p>
-        </ForecastCard>
-      ))}
-    </ForecastContainer>    
+    <OuterWrapper>
+      <ForecastContainer>
+        {dailySummary.map((day, index) => (
+          <ForecastCard key={index}>
+            <p>
+              {new Date(day.date).toLocaleDateString("es-AR", {
+                weekday: "long",
+              })}
+            </p>
+            <p>
+              {new Date(day.date).toLocaleDateString("es-AR", {
+                day: "numeric",
+                month: "long",
+              })}
+            </p>
+            <img
+              src={`http://openweathermap.org/img/wn/${day.icon}@2x.png`}
+              alt="icono clima"
+            />
+            <p>{day.description}</p>
+            <p>Mín: {Math.round(day.temp_min)}°C</p>
+            <p>Max: {Math.round(day.temp_max)}°C</p>
+          </ForecastCard>
+        ))}
+      </ForecastContainer>
+    </OuterWrapper>
   );
 }
 
 const ForecastContainer = styled.div`
+  margin-top: 2rem;
   display: flex;
-  overflow-x: auto;
   gap: 16px;
-  padding: 20px;
   scroll-snap-type: x mandatory;
+  overflow-x: auto;
+  padding: 20px;
+  /* width: 100%; */
+  width: fit-content;
+  scroll-padding-left: 16px;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none; //Firefox
   &::-webkit-scrollbar {
     display: none; //Chrome/Safari
   }
+  /* @media (min-width: 700px) {
+    margin-left: 150px;
+  }
+  @media (min-width: 992px) {
+    margin-left: 225px;  
+}
+@media (min-width: 1200px) {
+    margin-left: 400px;
+} */
+`;
+
+const OuterWrapper = styled.div`
+  width: 100%;
+  overflow-x: auto;
+  display: flex;
+  justify-content: center; // Centra el ForecastContainer
 `;
 
 const ForecastCard = styled.div`
@@ -126,10 +146,7 @@ const ForecastCard = styled.div`
 
   p {
     margin: 8px 0;
-    
+
     font-size: 16px;
   }
 `;
-
-
-
