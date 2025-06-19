@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
 import { BrowserRouter } from "react-router-dom";
-import AppRoutes from "./routh/AppRoutes.jsx";
+import AppRoutes from "./routes/AppRoutes.jsx";
 
 
 
