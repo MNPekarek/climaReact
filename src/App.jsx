@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
-import Home from "../pages/Home";
+import Home from "./pages/Home";
 
 
 export default function App() {
