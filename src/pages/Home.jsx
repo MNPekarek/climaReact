@@ -111,7 +111,7 @@ export const EyeButton = styled.button`
   top: 15px;
   right: 15px;
   z-index: 5;
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(118, 108, 108, 0.3);
   border: none;
   padding: 0.6rem 0.8rem;
   border-radius: 50%;

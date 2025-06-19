@@ -92,15 +92,21 @@ export default function WheaterDay({ city }) {
 
 const ForecastContainer = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  overflow-x: auto;
   gap: 16px;
-  justify-content: center;
   padding: 20px;
-  background: transparent;
-  border-radius: 12px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; //Firefox
+  &::-webkit-scrollbar {
+    display: none; //Chrome/Safari
+  }
 `;
 
 const ForecastCard = styled.div`
+  min-width: 160px;
+  flex: 0 0 auto;
+  scroll-snap-align: start;
   background: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(6px);
   padding: 16px;
