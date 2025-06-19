@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
-import Home from "./pages/Home.jsx";
-import WeatherDetails from "../components/wheaterMain/WeatherDetails";
+import Home from "../pages/home";
+
+// import WeatherDetails from "../components/wheaterMain/WeatherDetails";
 
 
 export default function AppRoutes({ darkMode, setDarkMode }) {
