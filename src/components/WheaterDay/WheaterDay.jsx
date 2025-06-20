@@ -105,15 +105,7 @@ const ForecastContainer = styled.div`
   &::-webkit-scrollbar {
     display: none; //Chrome/Safari
   }
-  /* @media (min-width: 700px) {
-    margin-left: 150px;
-  }
-  @media (min-width: 992px) {
-    margin-left: 225px;  
-}
-@media (min-width: 1200px) {
-    margin-left: 400px;
-} */
+  
 `;
 
 const OuterWrapper = styled.div`

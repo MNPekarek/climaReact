@@ -11,6 +11,7 @@ import WeatherDetails from "../components/wheaterMain/WeatherDetails.jsx";
 import { AnimatePresence, motion } from "framer-motion";
 import ToggleButtonNightmode from "../components/ToggleButtonNightmode/ToggleButtonNightmode.jsx";
 import { BsEye, BsEyeSlash } from "react-icons/bs";
+import Header from "../components/Header.jsx";
 
 
 motion;
@@ -38,9 +39,10 @@ export default function Home() {
 
       {!showOnlyBackground && (
         <>
-        <h1>Clima Actual</h1>
       <ToggleButtonNightmode />
-      <Search />
+      <Header />
+        {/* <h1>Clima Actual</h1>
+      <Search /> */}
 
       <AnimatePresence mode="wait">
         <motion.div

@@ -32,7 +32,7 @@ export default function Search() {
 
   return (
     <form onSubmit={handleSearch}>
-      <Input
+      <SearchInput
         type="text"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
@@ -41,11 +41,35 @@ export default function Search() {
     </form>
   );
 }
-const Input = styled.input`
-  padding: 0.5rem 1rem;
-  margin-bottom: 1rem;
-  border-radius: 1rem;
+const SearchInput = styled.input`
+  margin-top: 1rem;
+  border-radius: 999px;
+  padding: 10px 20px;
   border: none;
-  outline: none;
+  background: #ffffff22;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  backdrop-filter: blur(10px);
+  color: white;
+  margin-bottom: 1rem;  
   font-size: 1rem;
+  text-align: center;
+  
+  ::placeholder {
+    color: white;
+    opacity: 1;
+  }
+
+  /* soporte para navegadores especificos */
+  &::-webkit-input-placeholder {
+    color: white;
+    opacity: 0.5
+    
+  }
+  &:-ms-input-placeholder {
+    color: white;
+  }
+  &::-moz-placeholder {
+    color: white;
+    opacity: 1;
+  }
 `;
